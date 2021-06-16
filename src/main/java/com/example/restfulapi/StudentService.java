@@ -30,6 +30,10 @@ public class StudentService {
     }
 
     public void deleteStudent(Long studentId){
+        /* or
+        boolean exists = studentRepository.existsById(studentId);
+        if(!exists)
+        */
         if(!studentRepository.existsById(studentId)){
             throw new IllegalStateException("Student not found");
         }
@@ -55,6 +59,7 @@ public class StudentService {
         if(dob != null && !student.getDob().isEqual(dob)){
             student.setDob(dob);
         }
+        /* or compare with !Object.equals(student.getName(), name) same for email, dob*/
     }
 
 }
